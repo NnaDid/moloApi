@@ -20,24 +20,24 @@
         $email  = $obj['email'];
         $phone  = $obj['phone'];
         $pass   = $obj['paswd'];   
-    if($this->checkUserExist($email,"users","email")==false){	 
-        if($this->checkUserExist($phone,"users","phone")==false){ 
-                $pass_hash = password_hash($pass,PASSWORD_DEFAULT); 
-                $sql       = "INSERT INTO `users`(`name`,`email`,`phone`,`paswd`,`createdAt`) VALUES(?,?,?,?,NOW())";
-                $stmt      = $con->prepare($sql);
-                $stmt->bind_param("sssis",$fname,$email,$phone,$bvn,$pass_hash);
-                if($stmt->execute()){
-                    $this->data['message'] = 'success';
-                }else{
+    if($this->checkUserExist($email,"users","email")==true){	
+        $this->data['message'] = 'Account exists with this email';
+    } else if($this->checkUserExist($phone,"users","phone")==true){ 
+        $this->data['message'] = "User with this phone number already exist";
+    }else{
+            $pass_hash = password_hash($pass,PASSWORD_DEFAULT); 
+            $sql       = "INSERT INTO `users`(`name`,`email`,`phone`,`paswd`,`createdAt`) VALUES(?,?,?,?,NOW())";
+            $stmt      = $con->prepare($sql);
+            $stmt->bind_param("sssis",$fname,$email,$phone,$bvn,$pass_hash);
+            if($stmt->execute()){
+                $this->data['message'] = 'success';
+            }else{
                     $this->data['message'] = "Error Registering ".$stmt->error;
                 }
                $stmt->close(); 
-        }else{
-            $this->data['message'] = "User with this phone number already exist";
-        }
-    }else{
-        $this->data['message'] = 'Account exists with this email';
-    }
+            }
+       
+    
      $con->close();    
      echo json_encode($this->data); 
   }
