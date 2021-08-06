@@ -21,17 +21,21 @@
         $phone  = $obj['phone'];
         $pass   = $obj['paswd'];   
     if($this->checkUserExist($email,"users","email")==true){	
+        $this->data['status']= "false";
         $this->data['message'] = 'Account exists with this email';
     } else if($this->checkUserExist($phone,"users","phone")==true){ 
+        $this->data['status']= "false";
         $this->data['message'] = "User with this phone number already exist";
     }else{
             $pass_hash = password_hash($pass,PASSWORD_DEFAULT); 
-            $sql       = "INSERT INTO `users`(`name`,`email`,`phone`,`paswd`,`createdAt`) VALUES(?,?,?,?,NOW())";
+            $sql       = "INSERT INTO `users`(`name`,`email`,`phone`,`paswd`,`createdAt`, `updatedAt`) VALUES(?,?,?,?,NOW(),NOW())";
             $stmt      = $con->prepare($sql);
-            $stmt->bind_param("sssis",$fname,$email,$phone,$bvn,$pass_hash);
+            $stmt->bind_param("ssss",$fname,$email,$phone,$pass_hash);
             if($stmt->execute()){
+                $this->data['status']= "true";
                 $this->data['message'] = 'success';
             }else{
+                $this->data['status']= "false";
                     $this->data['message'] = "Error Registering ".$stmt->error;
                 }
                $stmt->close(); 
