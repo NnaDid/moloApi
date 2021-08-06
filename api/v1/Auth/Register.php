@@ -16,7 +16,7 @@
         $con    = $this->con();
         // decoding the received JSON and store into $obj variable.
         $obj    = json_decode($input,true); 
-        $fname  = $obj['name']; 
+        $name   = $obj['name']; 
         $email  = $obj['email'];
         $phone  = $obj['phone'];
         $pass   = $obj['paswd'];   
@@ -25,7 +25,7 @@
                 $pass_hash = password_hash($pass,PASSWORD_DEFAULT); 
                 $sql       = "INSERT INTO `users`(`name`,`email`,`phone`,`paswd`,`createdAt`) VALUES(?,?,?,?,NOW())";
                 $stmt      = $con->prepare($sql);
-                $stmt->bind_param("sssis",$fname,$email,$phone,$bvn,$pass_hash);
+                $stmt->bind_param("ssss",$name,$email,$phone,$pass_hash);
                 if($stmt->execute()){
                     $this->data['message'] = 'success';
                 }else{
