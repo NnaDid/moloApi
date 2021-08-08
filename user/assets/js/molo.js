@@ -2,6 +2,7 @@ $(document).ready(function(){
     // For Airtime Top Up and Funding wallet
     const topUpUrl        = "../api/v1/Topup/index.php";
     const fundWalletURL   = "../api/v1/Wallet/index.php";
+    const dataPlanURL     = "../api/v1/Dataplans/index.php";
 
     $(document).on("submit",".airTimeTopUp",function(evt){
           evt.preventDefault();
@@ -26,8 +27,8 @@ $("#service").change(function(evt){
     $("#price").html("<option><i class='lni-spinner lni-arrow-left lni-fade-left-effect'></i></option>");
     let service = $(this).val();
        $.ajax({
-           url:topUpUrl    ,
-           method:"POST",
+           url:dataPlanURL,
+           method:"GET",
            data:{service:service},
            success:(resp)=>{
                console.log(resp);

@@ -1,0 +1,104 @@
+To fund Wallet:
+================
+  PUT/OPTION :yourhost/molonet/api/v1/Wallet
+
+dataToSend: 
+{
+
+"action":"fund",
+    
+"email":"dids@gmail.com",
+  
+"amount":"200",
+    
+"ref":"66565TDF56543"
+
+}
+
+
+To GET WALLET BALANCE
+=====================
+  PUT/POST/GET :yourhost/molonet/api/v1/Wallet
+
+DataToSEND:
+{
+
+"action":"bal",
+"email":"dids@gmail.com"
+
+}
+
+==========================
+NB:
+`action` can be:
+  fund     (to fund wallet)
+  bal	   (Retrive wallet Balance)
+  transfer:(Tranfsfer fund to molo user)
+==========================
+
+
+==================================
+for Airtime Topup and DATA TOP UP:
+network = [airtel,9mobile,mtn,glo] 
+==================================
+ PUT/OPTION: yourhost/molonet/api/v1/Topup
+
+AIRTIME RECHARGE:
+{
+  
+"phone":"08139240318",
+    
+"amount":50,
+    
+"txType":"AIRTIME_VTU",
+    
+"network":"mtn"
+
+}
+
+DATA RECHARGE
+{
+  
+"phone":"08139240318",
+    
+"amount":50,
+    
+"txType":"DATA_VTU",
+    
+"network":"mtn"
+
+}
+
+
+NB: Please test only with NGN50
+
+
+
+SUMMARY OF APIs
+==============
+TopUpAPI        = "api/v1/Topup/index.php";
+FundWalletAPI   = "api/v1/Wallet/index.php";
+-----------------------------------------------
+DataPlanAPI     = "api/v1/Dataplans/index.php";
+
+send GET REQUEST to yourhost/molonet/api/v1/Dataplans?network=9mobile
+to see list of data plans for chosen network 
+
+
+
+
+All APIs are available here : https://github.com/NnaDid/moloApi
+
+
+Please follow the following sequentially to test:
+1. Signup  here "yourhost/api/v1/Auth/Register.php"
+2. You can Login "yourhost/api/v1/Auth/Login.php" (optional)
+3. Fund Wallet  "yourhost/molonet/api/v1/Wallet"
+4. Check Wallet Balance "yourhost/molonet/api/v1/Wallet"
+5. Topup your registered phone yourhost/molonet/api/v1/Topup
+6. TopUp Data  yourhost/molonet/api/v1/Topup
+7. List data Plans for specific network service provider
+    "/molonet/api/v1/Dataplans?network=9mobile"
+
+
+
