@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Molo App User </title>
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="assets/css/style-starter.css">
+
+<!-- Paystack Script Here -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+</head>
+
+<body class="sidebar-menu-collapsed">
+  <div class="se-pre-con"></div>
+<section>
+  <!-- sidebar menu start -->
+  <div class="sidebar-menu sticky-sidebar-menu">
+
+    <!-- logo start -->
+    <div class="logo">
+      <h1><a href="index.html">Molo</a></h1>
+    </div>
+
+    <div class="logo-icon text-center">
+      <a href="index.html" title="logo"><img src="assets/images/logo.png" alt="logo-icon"> </a>
+    </div>
+    <!-- //logo end -->
+
+    <div class="sidebar-menu-inner">
+
+      <!-- sidebar nav start -->
+      <ul class="nav nav-pills nav-stacked custom-nav">
+        <li class="active">
+          <a href="index.html"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
+        </li>  
+      </ul>
+      <!-- //sidebar nav end -->
+      <!-- toggle button start -->
+      <a class="toggle-btn">
+        <i class="fa fa-angle-double-left menu-collapsed__left"></i>
+        <i class="fa fa-angle-double-right menu-collapsed__right"></i>
+      </a>
+      <!-- //toggle button end -->
+    </div>
+  </div>
+  <!-- //sidebar menu end -->
+  <!-- header-starts -->
+  <div class="header sticky-header">
+
+    <!-- notification menu start -->
+    <div class="menu-right">
+      <div class="navbar user-panel-top"> 
+        <div class="user-dropdown-details d-flex">
+          
+          <div class="profile_details">
+            <ul>
+              <li class="dropdown profile_details_drop">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu3" aria-haspopup="true"
+                  aria-expanded="false">
+                  <div class="profile_img">
+                    <img src="assets/images/profileimg.jpg" class="rounded-circle" alt="" />
+                    <div class="user-active">
+                      <span></span>
+                    </div>
+                  </div>
+                </a>
+                <ul class="dropdown-menu drp-mnu" aria-labelledby="dropdownMenu3">
+                  <li class="user-info">
+                    <h5 class="user-name">John Deo</h5>
+                    <span class="status ml-2">Available</span>
+                  </li>
+                  <li> <a href="#"><i class="lnr lnr-user"></i>My Profile</a> </li> 
+                  <li class="logout"> <a href="#sign-up.html"><i class="fa fa-power-off"></i> Logout</a> </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--notification menu end -->
+  </div>
+  <!-- //header-ends -->
+  <!-- main content start -->
+<div class="main-content">
+
+  <!-- content -->
+  <div class="container-fluid content-top-gap">
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb my-breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      </ol>
+    </nav>
+    <div class="welcome-msg pt-3 pb-4">
+      <h1>Hi <span class="text-primary">John</span>, Welcome back</h1>
+      <p>Do sth wonderful</p>
+    </div>
+
+    <!-- statistics data -->
+    <div class="statistics">
+      <div class="row">
+        <div class="col-xl-6 pr-xl-2">
+          <div class="row">
+            <div class="col-sm-6 pr-sm-2 statistics-grid">
+              <div class="card card_border border-primary-top p-4">
+                <i class="lnr lnr-dollar">&#8358;  </i> 
+                <h3 class="text-primary number wallet_balance">0</h3>
+                <p class="stat-text">Wallet Ballance</p>
+              </div>
+            </div>
+            <div class="col-sm-6 pl-sm-2 statistics-grid">
+              <div class="card card_border border-primary-top p-4">
+                <i class="lnr lnr-eye"> </i>
+                <h3 class="text-secondary number">0</h3>
+                <p class="stat-text">Daily Visitors</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 pl-xl-2">
+          <div class="row">
+            <div class="col-sm-6 pr-sm-2 statistics-grid">
+              <div class="card card_border border-primary-top p-4">
+                <i class="lnr lnr-cloud-download"> </i>
+                <h3 class="text-success number">0</h3>
+                <p class="stat-text">Downloads</p>
+              </div>
+            </div>
+            <div class="col-sm-6 pl-sm-2 statistics-grid">
+              <div class="card card_border border-primary-top p-4">
+                <i class="lnr lnr-cart"> </i>
+                <h3 class="text-danger number">0k</h3>
+                <p class="stat-text">Purchased</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- //statistics data -->
+
+
+    <!-- card -->
+    <section class="template-cards mb-4">
+      <div class="row">
+        <!--  First Column Begins-->
+        <div class="col-sm-12 col-md-12 col-lg-12 stretch-card">
+          <div class="card">
+            <div class="card-header">
+              <div class="sales-info">Fund Wallet<span>--<b>Test this with say NGN100 ( and use it to recharge your phone)</b></span></div></div> 
+              <div class="card-body">
+                <form class="fundWalletForm">
+                  <div class="row">
+                      <div class="form-group col-sm-4"> 
+                          <input type="number" class="form-control" id="amount" placeholder="Enter amount"> 
+                      </div>
+                      <div class="form-group col-sm-4"> 
+                          <input type="email" class="form-control" id="email" placeholder="email">
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                      </div>
+            
+                  </div> 
+              </form> 
+            </div>
+          </div>
+        </div>
+        <!-- Column1 Ends  -->
+                
+      </div>
+    </section>
+    <!-- //card -->
+
+
+
+    <!-- card -->
+    <section class="template-cards">      
+        <div class="row">
+          <!--  First Column Begins-->
+          <div class="col-sm-12 col-md-6 col-lg-6 stretch-card">
+            <div class="card">
+              <div class="card-header">
+                <div class="sales-info"><span>Airtime Top Up</span></div></div>
+            
+              <div class="card-body">
+              <form class="form airTimeTopUp" method ="post">
+              <p class ="topUpStatus"></p>
+                <div class="form-row">
+                  <div class="form-group col-lg-6">
+                  <input type="tel" class="form-control" name ="phone" id="phone" placeholder ="Phone Number" required =''>
+                  <label for="username">Receiver's Phone Number</label>
+                  </div>
+
+                  <div class="form-group col-lg-6">
+                  <input type="number" class="form-control" name ="tamount" id="tamount" placeholder ="Recharge Amount " required =''>
+                  <label for="username">Amount</label>
+                  </div>
+                </div>
+                <div class="form-row"> 
+                  <div class="form-group col-lg-6">
+                    <select class="form-control" name ="network" id="network" required =''>
+                      <option value="1">AIRTEL</option>
+                      <option value="2">9MOBILE</option>
+                      <option value="5">MTN</option>
+                      <option value="6">GLO</option>
+                    </select>
+                    <label for="email">Network</label>
+                    </div>
+                    
+                    <div class="form-group col-lg-6 text-right">
+                        <button type="submit" class="btn btn-primary btn-block">Recharge</button>
+                    </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+          </div>
+          <!-- Column1 Ends  -->
+          
+          
+          <!--  First Column Begins-->
+          <div class="col-sm-12 col-md-6 col-lg-6  stretch-card">
+            <div class="card">
+              <div class="card-header">
+                <div class="sales-info"><span>Data Top Up</span></div></div>
+              <div class="card-body">
+              <form class="form dataTopUp" method ="post">
+              <p class ="dataTopUpStatus"></p>
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
+                        <input type="tel" class="form-control" name ="dphone" id="dphone" placeholder ="Phone Number" required =''>
+                        <label for="username">Receiver's Phone Number</label>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <select class="form-control" name ="service" id="service" required =''>
+                          <option >Select Network</option>
+                          <option value="airtel">AIRTEL</option>
+                          <option value="9mobile">9MOBILE</option>
+                          <option value="mtn">MTN</option>
+                          <option value="glo">GLO</option>
+                        </select>
+                        <label for="service">Service Provider</label>
+                    </div>
+                </div>
+
+                <div class="form-row"> 
+                      <div class="form-group col-lg-6">
+                        <select class="form-control" name ="price" id="price" required =''></select>
+                        <label for="datasize">Data Size/Price</label>
+                    </div>
+                
+                    <div class="form-group col-lg-6 text-right">
+                    <button type="submit" class="btn btn-primary btn-block">Recharge</button>
+                    </div>
+                </div>
+
+
+              </form>
+            </div>
+          </div>
+          </div>
+          <!-- Column1 Ends  -->	
+          
+          
+          
+          
+          
+        </div>
+    </section>
+    <!-- //card -->
+
+  </div>
+  <!-- //content -->
+</div>
+<!-- main content end-->
+</section>
+  <!--footer section start-->
+<footer class="dashboard">
+  <p>&copy 2021  <a href="#" target="_blank" class="text-primary">Molo</a></p>
+</footer>
+<!--footer section end-->
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" class="bg-primary" title="Go to top">
+  <span class="fa fa-angle-up"></span>
+</button>
+<script>
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction()
+  };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("movetop").style.display = "block";
+    } else {
+      document.getElementById("movetop").style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<!-- /move top -->
+
+
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/js/jquery-1.10.2.min.js"></script>
+
+<script src="assets/js/jquery.nicescroll.js"></script>
+<script src="assets/js/scripts.js"></script>
+
+<script src="assets/js/molo.js"></script>
+
+<!-- close script -->
+<script>
+  var closebtns = document.getElementsByClassName("close-grid");
+  var i;
+
+  for (i = 0; i < closebtns.length; i++) {
+    closebtns[i].addEventListener("click", function () {
+      this.parentElement.style.display = 'none';
+    });
+  }
+</script>
+<!-- //close script -->
+
+<!-- disable body scroll when navbar is in active -->
+<script>
+  $(function () {
+    $('.sidebar-menu-collapsed').click(function () {
+      $('body').toggleClass('noscroll');
+    })
+  });
+</script>
+<!-- disable body scroll when navbar is in active -->
+
+ <!-- loading-gif Js -->
+ <script src="assets/js/modernizr.js"></script>
+ <script>
+     $(window).load(function () {
+         // Animate loader off screen
+         $(".se-pre-con").fadeOut("slow");;
+     });
+ </script>
+ <!--// loading-gif Js -->
+
+<!-- Bootstrap Core JavaScript -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+  
