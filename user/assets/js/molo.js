@@ -10,7 +10,7 @@ $(document).ready(function(){
           var amount  = $("#tamount").val();
           $(".topUpStatus").html("<i class='lni-spinner lni-arrow-left lni-fade-left-effect'></i><i class='lni-arrow-right lni-fade-right-effect'></i>");
           $.ajax({
-              url:requestUrl,
+              url:topUpUrl,
               method:"GET",
               data:{phone:phone,network:network,amount:amount,txType:"vtu",action:'topUp'},
               success:(resp)=>{

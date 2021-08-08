@@ -85,6 +85,8 @@ class Topup{
 
 
 	 private function topUpActionAirtime($amount,$phone,$network){ 
+        $networkIDs = array("airtel"=>1,"9mobile"=>2,"mtn"=>5,"glo"=>6);
+		$network    = $networkIDs[$network];
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
 		  CURLOPT_URL => "https://mobileairtimeng.com/httpapi/?userid=08139240318&pass=e5e1a22c7fdccf6e0793909&network=$network&phone=$phone&amt=$amount",
@@ -156,6 +158,21 @@ class Topup{
 
 	 }
 
+     public function getUserWalletBalance($uid){
+        $con        = $this->con();
+        $sql        = "SELECT `wal_balance` FROM `wallet` WHERE `userId`=?";
+        $stmt       = $con->prepare($sql);
+        $stmt->bind_param("i",$uid);
+        if($stmt->execute()){
+            $result  = $stmt->get_result();
+            if($result->num_rows>0){
+                $row = $result->fetch_assoc();
+                return  $row['wal_balance'];
+            }else{
+                return 0;
+            }
+        }
+ }
 
 }
 new Topup();
