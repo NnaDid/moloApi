@@ -1,7 +1,7 @@
 $(document).ready(function(){
     // For Airtime Top Up and Funding wallet
-    const topUpUrl     = "../api/v1/Topup/index.php";
-    const requestUrl   = "../api/v1/Wallet/index.php";
+    const topUpUrl        = "../api/v1/Topup/index.php";
+    const fundWalletURL   = "../api/v1/Wallet/index.php";
 
     $(document).on("submit",".airTimeTopUp",function(evt){
           evt.preventDefault();
@@ -79,18 +79,24 @@ $(document).on("submit",".dataTopUp",function(evt){
 			ref: 'MOLO'+Math.floor((Math.random() * 1000000000) + 1), 
 			callback: function(response){
 				alert("Payment Successfull "+response.reference);
+                let dataToSend = {
+                    amount:amount,
+                    ref:response.reference,
+                    action:action
+                };
+               
 				$.ajax({
     				url:requestUrl,
-    				method:"GET",
-    				data:{amount:amount,ref:response.reference,action:action},
-				success:function(res){
-				if(res==1){
-				    $(".fundWalletStatus").html('<div class ="alert alert-success"> Payment Successful! Ref Id ='+response.reference+'</div>');
-				}else{ 
-    				$(".fundWalletStatus").html('<div class ="alert alert-danger">'+res+'</div>');    				
-    			  }
-				}
-			});
+    				method:"POST",
+    				data:JSON.stringify(dataToSend),
+                    success:function(res){
+                    if(res==1){
+                        $(".fundWalletStatus").html('<div class ="alert alert-success"> Payment Successful! Ref Id ='+response.reference+'</div>');
+                    }else{ 
+                        $(".fundWalletStatus").html('<div class ="alert alert-danger">'+res+'</div>');    				
+                    }
+                    }
+                });
 			},
 			onClose: function(){
 				$(".fundWalletStatus").html(`<div class ="alert alert-danger">Please make sure you complete your payment process!!!</div>`);
@@ -102,3 +108,20 @@ $(document).on("submit",".dataTopUp",function(evt){
    
    
    });	
+
+   fetch(fundWalletURL, { 
+    method: 'POST',
+    body: JSON.stringify(dataToSend),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      //Hide Loader
+
+    })
+    .catch((error) => {
+      //Hide Loader
+    });
