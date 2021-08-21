@@ -75,20 +75,20 @@ class Wallet{
     }
 
 
-public function transferFund($uid,$amount,$txType,$recieverPhone){
+public function transferFund($uid,$amount,$txType,$donorPhone){
     // $txType   = vtu|funding|withdrawal|transfer, $amount should be NEGATIVE
     // check to ensure Receiver's phone number Exists
     $con      = $this->con();
-    if($this->checkUserExist($recieverPhone,'users','phone')){
-        $receiverID     = $this->getUserByPhoneNumber($recieverPhone)['id'];
+    if($this->checkUserExist($donorPhone,'users','phone')){
+        $receiverID     = $this->getUserByPhoneNumber($donorPhone)['id'];
         if($this->getUserWalletBalance($uid)>=$amount){ 
             $sqlReciever = $con->query("UPDATE `wallet` SET `wal_balance`=`wal_balance`+'$amount' WHERE `wal_id`='$receiverID'");
             $sqlSender   = $con->query("UPDATE `wallet` SET `wal_balance`=`wal_balance`-'$amount' WHERE `wal_id`='$uid'");
             if($sqlSender){
                 if($sqlReciever){
                     $txRef      = substr($this->getUserDetails($uid)['email'],0,3).rand(99999,999999); 
-                    if($this->performTxn($uid,$txType,$amount,$recieverPhone,$txRef)){
-                        echo "Successfully Transfered NGN $amount  to $recieverPhone ";	
+                    if($this->performTxn($uid,$txType,$amount,$donorPhone,$txRef)){
+                        echo "Successfully Transfered NGN $amount  to $donorPhone ";	
                         // Remember to Send Mails to Sender and Receiver									
                     }else{
                         echo "Error Occured During Transfer";
@@ -106,6 +106,35 @@ public function transferFund($uid,$amount,$txType,$recieverPhone){
 
     }
 
+    // This function attempts to Debit a user Wallet by the AMOUNT sh/e is Donating
+    private function donate($donorPhone,$amount,$donationType){
+        // $donationType is either : Offering|FreeWill|LoveOffering|Rapsody
+        $con      = $this->con();
+        if($this->checkUserExist($donorPhone,'users','phone')){
+            $donorId     = $this->getUserByPhoneNumber($donorPhone)['id'];
+            if($this->getUserWalletBalance($uid)>=$amount){ 
+                $sqlReciever = $con->query("UPDATE `wallet` SET `wal_balance`=`wal_balance`+'$amount' WHERE `wal_id`='$receiverID'");
+                $sqlSender   = $con->query("UPDATE `wallet` SET `wal_balance`=`wal_balance`-'$amount' WHERE `wal_id`='$uid'");
+                if($sqlSender){
+                    if($sqlReciever){
+                        $txRef      = substr($this->getUserDetails($uid)['email'],0,3).rand(99999,999999); 
+                        if($this->performTxn($uid,$txType,$amount,$donorPhone,$txRef)){
+                            echo "Successfully Transfered NGN $amount  to $donorPhone ";	
+                            // Remember to Send Mails to Sender and Receiver									
+                        }else{
+                            echo "Error Occured During Transfer";
+                        }
+                    }
+                }			   
+                    
+                }else{
+                    echo 'Insufficient Fund!';
+                }
+    
+            }else{
+                echo "Phone Number is not Registered on molo?";
+            }       
+    }
 
 // This function Gets thee User's Wallet Balance
 public function getUserWalletBalance($input){
