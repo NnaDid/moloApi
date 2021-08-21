@@ -1,6 +1,6 @@
 To fund Wallet:
 ================
-  PUT/OPTION :yourhost/molonet/api/v1/Wallet
+ PUT/OPTION :yourhost/molonet/api/v1/Wallet
 
 dataToSend: 
 {
